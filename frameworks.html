@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desenvolvimento de Sistemas com Frameworks</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+<body>
+    <!-- Cabeçalho -->
+    <header class="w3-container w3-center w3-padding-32 w3-blue">
+        <h1>Desenvolvimento de Sistemas com Frameworks</h1>
+    </header>
+
+    <!-- Navegação -->
+    <nav class="w3-bar w3-black">
+        <a href="#introducao" class="w3-bar-item w3-button">Introdução</a>
+        <a href="#orm" class="w3-bar-item w3-button">ORM</a>
+        <a href="#persistencia" class="w3-bar-item w3-button">Padrões de Persistência</a>
+        <a href="#padroes" class="w3-bar-item w3-button">Padrões de Projeto</a>
+        <a href="#mvc" class="w3-bar-item w3-button">MVC</a>
+        <a href="#desktop" class="w3-bar-item w3-button">Frameworks Desktop</a>
+        <a href="#rest" class="w3-bar-item w3-button">REST API</a>
+    </nav>
+
+    <!-- Conteúdo Principal -->
+    <div class="w3-container w3-padding-32">
+        <!-- Seção 1: Introdução -->
+        <section id="introducao">
+            <h2>Introdução ao Desenvolvimento com Frameworks</h2>
+            <p>Bem-vindo ao tutorial de "Desenvolvimento de Sistemas com Frameworks". Este curso, com carga horária de 80 horas-aula (60 horas), foi projetado para fornecer uma compreensão profunda dos conceitos e práticas envolvidos no desenvolvimento de sistemas utilizando frameworks. Você aprenderá sobre modelos de mapeamento objeto-relacional (ORM), padrões de persistência de objetos, padrões de projeto, arquitetura MVC, frameworks para desenvolvimento desktop e comunicação via REST API.</p>
+
+            <h3>Objetivos do Curso</h3>
+            <ul>
+                <li>Compreender a importância dos frameworks no desenvolvimento de sistemas.</li>
+                <li>Utilizar ORM para interagir com bancos de dados de forma eficiente.</li>
+                <li>Aplicar padrões de persistência para gerenciar dados.</li>
+                <li>Implementar padrões de projeto para criar software modular e reutilizável.</li>
+                <li>Entender e aplicar a arquitetura MVC em diferentes frameworks.</li>
+                <li>Desenvolver aplicações desktop com frameworks especializados.</li>
+                <li>Criar e consumir serviços web via REST API.</li>
+            </ul>
+
+            <h3>Estrutura do Curso</h3>
+            <p>O tutorial está dividido em sete seções, cada uma abordando um tópico da ementa:</p>
+            <ol>
+                <li>Introdução ao Desenvolvimento com Frameworks</li>
+                <li>Modelos de Mapeamento Objeto-Relacional (ORM)</li>
+                <li>Padrões de Persistência de Objetos</li>
+                <li>Padrões de Projeto</li>
+                <li>Arquitetura MVC</li>
+                <li>Frameworks para Desenvolvimento Desktop</li>
+                <li>Comunicação via REST API</li>
+            </ol>
+            <p>Cada seção contém:</p>
+            <ul>
+                <li><strong>Conteúdo Teórico</strong>: Explicações detalhadas dos conceitos.</li>
+                <li><strong>Exemplos Práticos</strong>: Códigos e cenários reais.</li>
+                <li><strong>Exercícios</strong>: Atividades para reforçar o aprendizado.</li>
+                <li><strong>Materiais Didáticos</strong>: Links para recursos adicionais, como documentação e tutoriais.</li>
+            </ul>
+
+            <h3>Material Didático</h3>
+            <ul>
+                <li>Exemplos de código em linguagens como Java, C#, Python e JavaScript.</li>
+                <li>Exercícios práticos para  <li>Links para documentação oficial e tutoriais complementares, como <a href="https://angular.io">Angular</a> e <a href="https://spring.io/projects/spring-boot">Spring Boot</a>.</li>
+            </ul>
+
+            <h3>O que são Frameworks?</h3>
+            <p>Um framework é uma estrutura pré-definida que fornece ferramentas, bibliotecas e convenções para facilitar o desenvolvimento de software. Ele atua como uma base sobre a qual os desenvolvedores constroem aplicações, reduzindo a necessidade de criar tudo do zero.</p>
+
+            <h3>Vantagens de Usar Frameworks</h3>
+            <ul>
+                <li><strong>Produtividade</strong>: Componentes pré-construídos aceleram o desenvolvimento.</li>
+                <li><strong>Manutenção</strong>: Padronização facilita a manutenção do código.</li>
+                <li><strong>Escalabilidade</strong>: Estruturas organizadas suportam o crescimento da aplicação.</li>
+                <li><strong>Comunidade</strong>: Suporte de comunidades ativas com plugins e atualizações.</li>
+            </ul>
+
+            <h3>Tipos de Frameworks</h3>
+            <table class="w3-table w3-bordered">
+                <tr>
+                    <th>Tipo</th>
+                    <th>Descrição</th>
+                    <th>Exemplos</th>
+                </tr>
+                <tr>
+                    <td>Front-end</td>
+                    <td>Desenvolvimento de interfaces de usuário</td>
+                    <td>Angular, React, Vue.js</td>
+                </tr>
+                <tr>
+                    <td>Back-end</td>
+                    <td>Lógica de negócios e servidor</td>
+                    <td>Spring Boot, Express, Django</td>
+                </tr>
+                <tr>
+                    <td>Desktop</td>
+                    <td>Aplicações para computadores</td>
+                    <td>JavaFX, .NET WPF, Qt</td>
+                </tr>
+                <tr>
+                    <td>Mobile</td>
+                    <td>Aplicações para dispositivos móveis</td>
+                    <td>React Native, Flutter</td>
+                </tr>
+            </table>
+
+            <h3>Exercícios</h3>
+            <ol>
+                <li>Pesquise três frameworks front-end e compare suas características (ex.: facilidade de uso, desempenho).</li>
+                <li>Compare três frameworks back-end, considerando suporte a bancos de dados e escalabilidade.</li>
+                <li>Identifique três frameworks desktop e analise suas capacidades multiplataforma.</li>
+            </ol>
+
+            <h3>Recursos Adicionais</h3>
+            <ul>
+                <li><a href="https://blog.betrybe.com/framework-de-programacao/o-que-e-framework/">O que é um Framework</a></li>
+                <li><a href="https://www.escoladnc.com.br/blog/frameworks-em-programacao-conheca-os-principais-e-beneficios/">Frameworks em Programação</a></li>
+            </ul>
+        </section>
+
+        <!-- Seção 2: ORM -->
+        <section id="orm">
+            <h2>Modelos de Mapeamento Objeto-Relacional (ORM)</h2>
+            <p>O mapeamento objeto-relacional (ORM) é uma técnica que conecta objetos de uma linguagem de programação a tabelas de bancos de dados relacionais. Isso permite que desenvolvedores manipulem dados como objetos, sem escrever consultas SQL complexas.</p>
+
+            <h3>Benefícios do ORM</h3>
+            <ul>
+                <li><strong>Abstração</strong>: Simplifica interações com o banco de dados.</li>
+                <li><strong>Portabilidade</strong>: Facilita a troca de bancos de dados.</li>
+                <li><strong>Segurança</strong>: Reduz riscos de injeção SQL.</li>
+                <li><strong>Produtividade</strong>: Agiliza operações de banco de dados.</li>
+            </ul>
+
+            <h3>Exemplos de ORMs</h3>
+            <table class="w3-table w3-bordered">
+                <tr>
+                    <th>ORM</th>
+                    <th>Linguagem</th>
+                    <th>Descrição</th>
+                </tr>
+                <tr>
+                    <td>Hibernate</td>
+                    <td>Java</td>
+                    <td>ORM robusto para aplicações empresariais</td>
+                </tr>
+                <tr>
+                    <td>Entity Framework</td>
+                    <td>.NET</td>
+                    <td>Integração nativa com ecossistema Microsoft</td>
+                </tr>
+                <tr>
+                    <td>SQLAlchemy</td>
+                    <td>Python</td>
+                    <td>Flexível para diversos bancos de dados</td>
+                </tr>
+                <tr>
+                    <td>Doctrine</td>
+                    <td>PHP</td>
+                    <td>Popular em aplicações web PHP</td>
+                </tr>
+            </table>
+
+            <h3>Exemplo Prático: Hibernate</h3>
+            <pre><code>@Entity
+@Table(name = "usuarios")
+public class Usuario {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String nome;
+    private String email;
+    // Getters e Setters
+}</code></pre>
+
+            <h3>Exercícios</h3>
+            <ol>
+                <li>Configure o Hibernate e mapeie uma classe Java para uma tabela de banco de dados.</li>
+                <li>Use o Entity Framework para criar um modelo de dados e realizar operações CRUD.</li>
+                <li>Com o SQLAlchemy, defina um modelo e execute consultas em um banco de dados.</li>
+            </ol>
+
+            <h3>Recursos Adicionais</h3>
+            <ul>
+                <li><a href="https://hibernate.org/orm/documentation/6.6/">Primeiros Passos com Hibernate</a></li>
+                <li><a href="https://learn.microsoft.com/en-us/ef/core/get-started/overview/first-app">Entity Framework Tutorial</a></li>
+            </ul>
+        </section>
+
+        <!-- Seção 3: Padrões de Persistência -->
+        <section id="persistencia">
+            <h2>Padrões de Persistência de Objetos</h2>
+            <p>Padrões de persistência são soluções padronizadas para gerenciar a persistência de dados, garantindo eficiência e consistência. Eles abstraem a lógica de acesso a dados, facilitando a manutenção.</p>
+
+            <h3>Padrões Comuns</h3>
+            <ul>
+                <li><strong>Repository</strong>: Interface para operações CRUD, isolando a lógica de acesso ao banco.</li>
+                <li><strong>Unit of Work</strong>: Gerencia transações, garantindo atomicidade.</li>
+                <li><strong>Identity Map</strong>: Evita duplicação de objetos, mantendo uma única instância por identidade.</li>
+            </ul>
+
+            <h3>Implementação em Frameworks</h3>
+            <ul>
+                <li><strong>Spring Data JPA</strong>: Implementa o padrão Repository com interfaces como <code>JpaRepository</code>.</li>
+                <li><strong>Entity Framework</strong>: Usa <code>DbContext</code> para gerenciar Unit of Work.</li>
+            </ul>
+
+            <h3>Exemplo Prático: Spring Data JPA</h3>
+            <pre><code>@Repository
+public interface UsuarioRepository extends JpaRepository&lt;Usuario, Long&gt; {
+    List&lt;Usuario&gt; findByNome(String nome);
+}</code></pre>
+
+            <h3>Exercícios</h3>
+            <ol>
+                <li>Crie um repositório com Spring Data JPA para gerenciar uma entidade.</li>
+                <li>Implemente o padrão Unit of Work em .NET com Entity Framework.</li>
+                <li>Explique como o Identity Map é aplicado em um ORM como Hibernate.</li>
+            </ol>
+
+            <h3>Recursos Adicionais</h3>
+            <ul>
+                <li><a href="https://docs.spring.io/spring-data/jpa/docs/current/reference/html/">Spring Data JPA</a></li>
+                <li><a href="https://learn.microsoft.com/en-us/ef/core/">Entity Framework Core</a></li>
+            </ul>
+        </section>
+
+        <!-- Seção 4: Padrões de Projeto -->
+        <section id="padroes">
+            <h2>Padrões de Projeto</h2>
+            <p>Padrões de projeto são soluções reutilizáveis para problemas comuns no desenvolvimento de software. Eles promovem modularidade, flexibilidade e manutenibilidade.</p>
+
+            <h3>Tipos de Padrões</h3>
+            <table class="w3-table w3-bordered">
+                <tr>
+                    <th>Categoria</th>
+                    <th>Exemplos</th>
+                    <th>Descrição</th>
+                </tr>
+                <tr>
+                    <td>Criacionais</td>
+                    <td>Singleton, Factory Method</td>
+                    <td>Gerenciam a criação de objetos</td>
+                </tr>
+                <tr>
+                    <td>Estruturais</td>
+                    <td>Adapter, Composite</td>
+                    <td>Organizam a composição de classes</td>
+                </tr>
+                <tr>
+                    <td>Comportamentais</td>
+                    <td>Observer, Strategy</td>
+                    <td>Gerenciam interações entre objetos</td>
+                </tr>
+            </table>
+
+            <h3>Exemplos e Implementações</h3>
+            <p><strong>Singleton</strong>:</p>
+            <pre><code>public class DatabaseConnection {
+    private static DatabaseConnection instance;
+    private DatabaseConnection() {}
+    public static DatabaseConnection getInstance() {
+        if (instance == null) {
+            instance = new DatabaseConnection();
+        }
+        return instance;
+    }
+}</code></pre>
+            <p><strong>Factory Method</strong>: Define uma interface para criar objetos, permitindo subclasses decidirem o tipo.</p>
+            <p><strong>Observer</strong>: Notifica dependentes sobre mudanças de estado.</p>
+
+            <h3>Exercícios</h3>
+            <ol>
+                <li>Implemente o padrão Singleton em Java para uma conexão de banco de dados.</li>
+                <li>Crie um Factory Method em C# para instanciar diferentes tipos de veículos.</li>
+                <li>Desenvolva o padrão Observer em Python para notificar eventos.</li>
+            </ol>
+
+            <h3>Recursos Adicionais</h3>
+            <ul>
+                <li><a href="https://refactoring.guru/design-patterns">Padrões de Projeto</a></li>
+                <li><a href="https://sourcemaking.com/design_patterns">Design Patterns</a></li>
+            </ul>
+        </section>
+
+        <!-- Seção 5: Arquitetura MVC -->
+        <section id="mvc">
+            <h2>Arquitetura MVC</h2>
+            <p>A arquitetura MVC (Model-View-Controller) separa uma aplicação em três componentes:</p>
+            <ul>
+                <li><strong>Model</strong>: Gerencia dados e lógica de negócios.</li>
+                <li><strong>View</strong>: Exibe a interface do usuário.</li>
+                <li><strong>Controller</strong>: Processa entradas do usuário e coordena Model e View.</li>
+            </ul>
+
+            <h3>Implementação em Frameworks</h3>
+            <ul>
+                <li><strong>Angular</strong>: Componentes (View), serviços (Model) e controladores (Controller).</li>
+                <li><strong>Spring MVC</strong>: Beans (Model), JSP/Thymeleaf (View) e classes <code>@Controller</code>.</li>
+            </ul>
+
+            <h3>Exemplo Prático: Angular</h3>
+            <pre><code>@Component({
+    selector: 'app-usuario',
+    template: '&lt;h1&gt;{{ usuario.nome }}&lt;/h1&gt;'
+})
+export class UsuarioComponent {
+    usuario = { nome: 'João' };
+}</code></pre>
+
+            <h3>Exercícios</h3>
+            <ol>
+                <li>Crie uma aplicação Angular com um componente, serviço e controlador.</li>
+                <li>Desenvolva uma aplicação Spring MVC para listar e adicionar usuários.</li>
+            </ol>
+
+            <h3>Recursos Adicionais</h3>
+            <ul>
+                <li><a href="https://angular.io/guide/architecture">Guia Completo de Angular</a></li>
+                <li><a href="https://spring.io/guides/gs/serving-web-content/">Spring MVC Tutorial</a></li>
+            </ul>
+        </section>
+
+        <!-- Seção 6: Frameworks para Desenvolvimento Desktop -->
+        <section id="desktop">
+            <h2>Frameworks para Desenvolvimento Desktop</h2>
+            <p>Frameworks desktop permitem criar aplicações que rodam diretamente no computador, com interfaces ricas e integração ao sistema operacional.</p>
+
+            <h3>Exemplos</h3>
+            <table class="w3-table w3-bordered">
+                <tr>
+                    <th>Framework</th>
+                    <th>Linguagem</th>
+                    <th>Descrição</th>
+                </tr>
+                <tr>
+                    <td>JavaFX</td>
+                    <td>Java</td>
+                    <td>Sucessor do Swing, para interfaces modernas</td>
+                </tr>
+                <tr>
+                    <td>.NET WPF</td>
+                    <td>.NET</td>
+                    <td>Interfaces ricas para Windows</td>
+                </tr>
+                <tr>
+                    <td>Qt</td>
+                    <td>C++</td>
+                    <td>Aplicações multiplataforma</td>
+                </tr>
+            </table>
+
+            <h3>Exemplo Prático: JavaFX</h3>
+            <pre><code>public class HelloWorld extends Application {
+    @Override
+    public void start(Stage stage) {
+        Button btn = new Button("Clique!");
+        StackPane root = new StackPane(btn);
+        Scene scene = new Scene(root, 300, 250);
+        stage.setScene(scene);
+        stage.show();
+    }
+}</code></pre>
+
+            <h3>Exercícios</h3>
+            <ol>
+                <li>Crie uma aplicação JavaFX com uma janela e um botão.</li>
+                <li>Desenvolva uma aplicação .NET WPF para exibir uma lista de itens.</li>
+                <li>Implemente uma aplicação Qt com uma mensagem de boas-vindas.</li>
+            </ol>
+
+            <h3>Recursos Adicionais</h3>
+            <ul>
+                <li><a href="https://openjfx.io/">JavaFX Tutorial</a></li>
+                <li><a href="https://learn.microsoft.com/en-us/dotnet/desktop/wpf/get-started/create-wpf-app-visual-studio">WPF Tutorial</a></li>
+            </ul>
+        </section>
+
+        <!-- Seção 7: Comunicação via REST API -->
+        <section id="rest">
+            <h2>Comunicação via REST API</h2>
+            <p>REST (Representational State Transfer) é um estilo arquitetural que usa HTTP para comunicação entre sistemas, manipulando recursos via URIs.</p>
+
+            <h3>Princípios do REST</h3>
+            <ul>
+                <li><strong>Stateless</strong>: Requisições são independentes.</li>
+                <li><strong>Client-Server</strong>: Separação entre cliente e servidor.</li>
+                <li><strong>Cache</strong>: Respostas podem ser armazenadas para desempenho.</li>
+                <li><strong>Uniform Interface</strong>: Operações padrão (GET, POST, PUT, DELETE).</li>
+            </ul>
+
+            <h3>Criando e Consumindo REST APIs</h3>
+            <ul>
+                <li><strong>Criação</strong>: Frameworks como Spring Boot e Express.</li>
+                <li><strong>Consumo</strong>: Bibliotecas como Axios e RestTemplate.</li>
+            </ul>
+
+            <h3>Exemplo Prático: Spring Boot REST API</h3>
+            <pre><code>@RestController
+@RequestMapping("/api/usuarios")
+public class UsuarioController {
+    @GetMapping
+    public List&lt;Usuario&gt; listar() {
+        return Arrays.asList(new Usuario("João"), new Usuario("Maria"));
+    }
+}</code></pre>
+
+            <h3>Exercícios</h3>
+            <ol>
+                <li>Crie uma REST API com Spring Boot para operações CRUD.</li>
+                <li>Consuma a API do exercício anterior com Axios em JavaScript.</li>
+                <li>Adicione autenticação JWT à sua REST API.</li>
+            </ol>
+
+            <h3>Recursos Adicionais</h3>
+            <ul>
+                <li><a href="https://spring.io/guides/gs/rest-service/">Spring Boot REST API</a></li>
+                <li><a href="https://axios-http.com/docs/intro">Axios Tutorial</a></li>
+            </ul>
+        </section>
+
+        <!-- Conclusão -->
+        <section id="conclusao">
+            <h2>Conclusão</h2>
+            <p>Este tutorial fornece uma base sólida para o desenvolvimento de sistemas com frameworks. Com os conhecimentos adquiridos, você está preparado para criar aplicações robustas, aplicar padrões de projeto e integrar sistemas via REST API. Continue explorando os recursos fornecidos para aprofundar seu aprendizado.</p>
+        </section>
+    </div>
+
+    <!-- Rodapé -->
+    <footer class="w3-container w3-center w3-padding-16 w3-grey">
+        <p>&copy; 2025 Desenvolvimento de Sistemas com Frameworks</p>
+    </footer>
+</body>
+</html>
