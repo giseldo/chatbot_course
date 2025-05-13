@@ -1,0 +1,344 @@
+<script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+
+                // Convert sheet to JSON to filter blank rows
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                // Filter out blank rows (rows where all cells are empty, null, or undefined)
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                // Fallback
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
+                }
+
+                // Convert filtered JSON back to CSV
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
+            }
+        }
+        return gk_fileData[filename] || "";
+        }
+        </script><!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutorial de Chatbots em Python</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            background: #004aad;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        nav {
+            background: #e0e0e0;
+            padding: 10px;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            text-align: center;
+        }
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+        nav ul li a | {
+            text-decoration: none;
+            color: #004aad;
+            font-weight: bold;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2, h3 {
+            color: #004aad;
+        }
+        pre {
+            background: #f8f8f8;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        code {
+            font-family: 'Courier New', Courier, monospace;
+        }
+        .exercise {
+            background: #e8f0fe;
+            padding: 15px;
+            margin: 15px 0;
+            border-left: 5px solid #004aad;
+        }
+        .solution {
+            display: none;
+            background: #f0f0f0;
+            padding: 10px;
+            margin-top: 10px;
+        }
+        button {
+            background: #004aad;
+            color: #fff;
+            border: none;
+            padding: 8px 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background: #003366;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #004aad;
+            color: #fff;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Tutorial de Chatbots em Python</h1>
+        <p>Aprenda a Construir Chatbots Interativos com Python</p>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#introducao">Introdução</a></li>
+            <li><a href="#configuracao">Configuração</a></li>
+            <li><a href="#chatbot-basico">Chatbot Básico</a></li>
+            <li><a href="#chatbot-avancado">Chatbot Avançado</a></li>
+            <li><a href="#exercicios">Exercícios</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <section id="introducao">
+            <h2>Introdução aos Chatbots</h2>
+            <p>
+                Um chatbot é uma aplicação de software projetada para simular uma conversa humana. 
+                Este tutorial oferece um guia passo a passo para criar chatbots utilizando Python, 
+                aproveitando a biblioteca Natural Language Toolkit (NLTK) para processamento de linguagem natural. 
+                Ao final, você terá construído um chatbot básico baseado em regras e um chatbot avançado 
+                com capacidades de correspondência de padrões, além de completar exercícios práticos.
+            </p>
+        </section>
+
+        <section id="configuracao">
+            <h2>Configurando o Ambiente</h2>
+            <p>
+                Para começar, certifique-se de que o Python está instalado em seu sistema (recomenda-se a versão 3.6 ou superior). 
+                Você também precisará instalar a biblioteca NLTK, utilizada para tarefas de processamento de linguagem natural.
+            </p>
+            <h3>Etapas de Instalação</h3>
+            <ol>
+                <li>Instale o Python a partir de <a href="https://www.python.org/downloads/">python.org</a>.</li>
+                <li>Abra um terminal ou prompt de comando e instale o NLTK usando pip:
+                    <pre><code>pip install nltk</code></pre>
+                </li>
+                <li>Inicie o Python em seu terminal e baixe os dados do NLTK:
+                    <pre><code>import nltk
+nltk.download('punkt')</code></pre>
+                </li>
+            </ol>
+        </section>
+
+        <section id="chatbot-basico">
+            <h2>Construindo um Chatbot Básico</h2>
+            <p>
+                O primeiro chatbot utilizará uma lógica baseada em regras simples para responder a entradas do usuário com base 
+                em padrões predefinidos. Abaixo está um exemplo de um chatbot básico que responde a saudações e perguntas comuns.
+            </p>
+            <pre><code>
+import random
+
+# Define pares de respostas
+responses = {
+    "olá": ["Olá!", "Oi!", "E aí!"],
+    "como você está": ["Estou ótimo, obrigado!", "Bem, e você?"],
+    "tchau": ["Adeus!", "Até mais!"],
+    "default": ["Desculpe, não entendi.", "Pode reformular isso?"]
+}
+
+def basic_chatbot(user_input):
+    user_input = user_input.lower().strip()
+    for key in responses:
+        if key in user_input:
+            return random.choice(responses[key])
+    return random.choice(responses["default"])
+
+# Loop principal
+print("Chatbot Básico: Digite 'sair' para encerrar.")
+while True:
+    user_input = input("Você: ")
+    if user_input.lower() == "sair":
+        print("Chatbot: Adeus!")
+        break
+    print("Chatbot:", basic_chatbot(user_input))
+            </code></pre>
+            <p>
+                Este chatbot verifica se a entrada do usuário contém palavras-chave específicas e responde com uma 
+                resposta aleatória da lista correspondente. Se nenhuma palavra-chave for encontrada, ele fornece uma resposta padrão.
+            </p>
+        </section>
+
+        <section id="chatbot-avancado">
+            <h2>Construindo um Chatbot Avançado com NLTK</h2>
+            <p>
+                Para um chatbot mais sofisticado, utilizaremos a ferramenta de chat do NLTK, que suporta correspondência de padrões 
+                para conversas mais dinâmicas. O exemplo abaixo demonstra um chatbot que lida com uma variedade de entradas do usuário 
+                usando padrões de expressões regulares.
+            </p>
+            <pre><code>
+from nltk.chat.util import Chat, reflections
+
+# Define pares de conversa
+pairs = [
+    [r"meu nome é (.*)", ["Olá %1, prazer em conhecê-lo!", "Oi %1, como posso ajudá-lo?"]],
+    [r"oi|olá|e aí", ["Olá!", "Oi!", "E aí!"]],
+    [r"como você está", ["Estou bem, obrigado!", "Ótimo, e você?"]],
+    [r"qual é o seu nome", ["Sou GrokBot, seu assistente virtual!", "Pode me chamar de GrokBot!"]],
+    [r"sair|tchau|adeus", ["Adeus!", "Até mais!"]],
+    [r"(.*)", ["Não sei se entendi.", "Pode explicar melhor?"]]
+]
+
+# Cria instância do chatbot
+chatbot = Chat(pairs, reflections)
+
+def advanced_chatbot():
+    print("Chatbot Avançado: Digite 'sair' para encerrar.")
+    chatbot.converse()
+
+# Executa o chatbot
+if __name__ == "__main__":
+    advanced_chatbot()
+            </code></pre>
+            <p>
+                Este chatbot utiliza a classe `Chat` do NLTK para combinar entradas do usuário com padrões de expressões regulares e 
+                responder adequadamente. O dicionário `reflections` permite que o chatbot transforme declarações 
+                (por exemplo, "eu sou" para "você é") para respostas mais naturais.
+            </p>
+        </section>
+
+        <section id="exercicios">
+            <h2>Exercícios</h2>
+            <p>
+                Os exercícios a seguir ajudarão a reforçar seu entendimento sobre o desenvolvimento de chatbots. 
+                Tente resolver cada exercício e verifique a solução, se necessário.
+            </p>
+            <div class="exercise">
+                <h3>Exercício 1: Aprimorar o Chatbot Básico</h3>
+                <p>
+                    Modifique o chatbot básico para incluir pelo menos três novos pares de respostas (por exemplo, para "obrigado", 
+                    "que horas são" e "ajuda"). Teste o chatbot para garantir que ele responde apropriadamente.
+                </p>
+                <button onclick="toggleSolution('solution1')">Mostrar Solução</button>
+                <div id="solution1" class="solution">
+                    <pre><code>
+import random
+
+responses = {
+    "olá": ["Olá!", "Oi!", "E aí!"],
+    "como você está": ["Estou ótimo, obrigado!", "Bem, e você?"],
+    "tchau": ["Adeus!", "Até mais!"],
+    "obrigado": ["De nada!", "Sem problemas!"],
+    "que horas são": ["Não tenho relógio, mas é sempre hora de conversar!", "Hora de papear!"],
+    "ajuda": ["Estou aqui para ajudar! Pergunte qualquer coisa.", "Como posso te ajudar?"],
+    "default": ["Desculpe, não entendi.", "Pode reformular isso?"]
+}
+
+def basic_chatbot(user_input):
+    user_input = user_input.lower().strip()
+    for key in responses:
+        if key in user_input:
+            return random.choice(responses[key])
+    return random.choice(responses["default"])
+
+print("Chatbot Básico Aprimorado: Digite 'sair' para encerrar.")
+while True:
+    user_input = input("Você: ")
+    if user_input.lower() == "sair":
+        print("Chatbot: Adeus!")
+        break
+    print("Chatbot:", basic_chatbot(user_input))
+                    </code></pre>
+                </div>
+            </div>
+            <div class="exercise">
+                <h3>Exercício 2: Adicionar Padrões ao Chatbot Avançado</h3>
+                <p>
+                    Amplie o chatbot avançado adicionando dois novos pares de padrão-resposta. Por exemplo, adicione um padrão 
+                    para "eu gosto de (.*)" e "o que é (.*)". Teste o chatbot para verificar as novas respostas.
+                </p>
+                <button onclick="toggleSolution('solution2')">Mostrar Solução</button>
+                <div id="solution2" class="solution">
+                    <pre><code>
+from nltk.chat.util import Chat, reflections
+
+pairs = [
+    [r"meu nome é (.*)", ["Olá %1, prazer em conhecê-lo!", "Oi %1, como posso ajudá-lo?"]],
+    [r"oi|olá|e aí", ["Olá!", "Oi!", "E aí!"]],
+    [r"como você está", ["Estou bem, obrigado!", "Ótimo, e você?"]],
+    [r"qual é o seu nome", ["Sou GrokBot, seu assistente virtual!", "Pode me chamar de GrokBot!"]],
+    [r"sair|tchau|adeus", ["Adeus!", "Até mais!"]],
+    [r"eu gosto de (.*)", ["Que legal! Eu também gosto de %1!", "Bacana, conte mais sobre %1!"]],
+    [r"o que é (.*)", ["Não sou uma enciclopédia, mas %1 parece interessante!", "Pode contar mais sobre %1?"]],
+    [r"(.*)", ["Não sei se entendi.", "Pode explicar melhor?"]]
+]
+
+chatbot = Chat(pairs, reflections)
+
+def advanced_chatbot():
+    print("Chatbot Avançado: Digite 'sair' para encerrar.")
+    chatbot.converse()
+
+if __name__ == "__main__":
+    advanced_chatbot()
+                    </code></pre>
+                </div>
+            </div>
+        </section>
+    </div>
+    <footer>
+        <p>© 2025 Tutorial de Chatbots em Python. Todos os direitos reservados.</p>
+    </footer>
+    <script>
+        function toggleSolution(id) {
+            const solution = document.getElementById(id);
+            solution.style.display = solution.style.display === "block" ? "none" : "block";
+        }
+    </script>
+</body>
+</html>
